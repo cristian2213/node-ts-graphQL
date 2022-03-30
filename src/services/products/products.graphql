@@ -1,0 +1,25 @@
+# THIS IS THE DATA I WANTO TO FETCH
+type Query {
+  products: [Product]
+  productsByPrice(min: Float!, max: Float!): [Product]
+  product(id: ID!): Product
+}
+
+type Mutation {
+  addNewProduct(id: ID!, description: String!, price: Float!): Product
+  addNewProductReview(id: ID!, rating: Int!, comment: String): Review
+}
+
+# THIS IS THE SHAPE OF MY PRODUCT OBJECT
+type Product {
+  id: ID!
+  description: String!
+  reviews: [Review]
+  price: Float!
+}
+
+# THIS IS THE SHAPE OF MY REVIEW OBJECT
+type Review {
+  rating: Int!
+  comment: String
+}
