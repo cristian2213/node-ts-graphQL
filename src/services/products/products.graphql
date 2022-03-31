@@ -1,3 +1,5 @@
+# ALL THIS FILE IS MY SCHEMA
+
 # THIS IS THE DATA I WANTO TO FETCH
 type Query {
   products: [Product]

@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { join } from 'path';
 import { ApolloServer } from 'apollo-server-express';
+
 import { loadFilesSync } from '@graphql-tools/load-files';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 
@@ -13,7 +14,7 @@ async function startApolloServer(): Promise<void> {
   const app = express();
 
   const schema = makeExecutableSchema({
-    typeDefs: typesArray,
+    typeDefs: typesArray, // Merges all Schemas and Mutations in rootQuery{} and rootMutation{}
     resolvers: resolversArray,
   });
 
@@ -24,6 +25,8 @@ async function startApolloServer(): Promise<void> {
 
   // More required logic for integrating with Express
   await server.start();
+
+  // Middleware to connect Express with AplloServer
   server.applyMiddleware({
     app,
 

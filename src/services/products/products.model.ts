@@ -1,4 +1,11 @@
-const products = [
+type Product = {
+  id: string;
+  description: string;
+  price: number;
+  reviews: Array<Object>;
+};
+
+const products: Product[] = [
   {
     id: 'redshoe',
     description: 'Red Shoe',
@@ -17,19 +24,19 @@ function getAllProducts() {
   return products;
 }
 
-function getProductsByPrice(min, max) {
+function getProductsByPrice(min: number, max: number) {
   return products.filter((product) => {
     return product.price >= min && product.price <= max;
   });
 }
 
-function getProductById(id) {
+function getProductById(id: string) {
   return products.find((product) => {
     return product.id === id;
   });
 }
 
-function addNewProduct(id, description, price) {
+function addNewProduct(id: string, description: string, price: number) {
   const newProduct = {
     id,
     price,
@@ -41,7 +48,7 @@ function addNewProduct(id, description, price) {
   return newProduct;
 }
 
-function addNewProductReview(id, rating, comment) {
+function addNewProductReview(id: string, rating: number, comment: string) {
   const matchedProduct = getProductById(id);
 
   if (matchedProduct) {
